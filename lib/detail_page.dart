@@ -129,7 +129,7 @@ class _Details_pageState extends State<Details_page>
                                 top: Radius.circular(40),
                               ),
                             ),
-                            backgroundColor: Color(0xff330066),
+                            backgroundColor: Colors.deepPurple,
                             builder: (context) => Container(
                               width: double.infinity,
                               height: 300,
