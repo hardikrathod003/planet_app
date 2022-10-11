@@ -177,17 +177,20 @@ class _HomepageState extends State<Homepage>
                             child: Container(
                               height: 100,
                               alignment: Alignment.centerLeft,
-                              child: AnimatedBuilder(
-                                animation: animationController,
-                                builder: (context, widget) {
-                                  return RotationTransition(
-                                    turns: animationController,
-                                    child: widget,
-                                  );
-                                },
-                                child: Image.network(
-                                  e['image'],
-                                  fit: BoxFit.cover,
+                              child: Hero(
+                                tag: e["name"],
+                                child: AnimatedBuilder(
+                                  animation: animationController,
+                                  builder: (context, widget) {
+                                    return RotationTransition(
+                                      turns: animationController,
+                                      child: widget,
+                                    );
+                                  },
+                                  child: Image.network(
+                                    e['image'],
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),

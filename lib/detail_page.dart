@@ -126,20 +126,25 @@ class _Details_pageState extends State<Details_page>
                             context: context,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(40),
+                                top: Radius.circular(30),
                               ),
                             ),
-                            backgroundColor: Colors.deepPurple,
+                            backgroundColor: Color(0xff130027),
                             builder: (context) => Container(
                               width: double.infinity,
                               height: 300,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(40),
+                                ),
+                              ),
                               child: Column(
                                 children: [
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.only(top: 5),
+                                        padding: EdgeInsets.only(top: 10),
                                         child: Text(
                                           "Welcome to " + e["name"],
                                           style: TextStyle(
@@ -187,30 +192,17 @@ class _Details_pageState extends State<Details_page>
                                         Icons.location_on,
                                         color: Colors.white54,
                                       ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
                                       Text(
-                                        e["distance"],
+                                        "Distance To Earth :-",
                                         style: TextStyle(
                                             color: Colors.white54,
-                                            fontSize: 25),
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Icon(
-                                        Icons.speed,
-                                        color: Colors.white54,
-                                      ),
-                                      SizedBox(
-                                        width: 8,
+                                            fontSize: 20),
                                       ),
                                       Text(
-                                        e["gravity"],
+                                        e["distoearth"],
                                         style: TextStyle(
                                             color: Colors.white54,
-                                            fontSize: 25),
+                                            fontSize: 20),
                                       ),
                                     ],
                                   ),
@@ -334,17 +326,20 @@ class _Details_pageState extends State<Details_page>
                         child: Container(
                           height: 150,
                           width: 150,
-                          child: AnimatedBuilder(
-                            animation: animationController,
-                            builder: (context, widget) {
-                              return RotationTransition(
-                                turns: animationController,
-                                child: widget,
-                              );
-                            },
-                            child: Image.network(
-                              e['image'],
-                              fit: BoxFit.cover,
+                          child: Hero(
+                            tag: e["name"],
+                            child: AnimatedBuilder(
+                              animation: animationController,
+                              builder: (context, widget) {
+                                return RotationTransition(
+                                  turns: animationController,
+                                  child: widget,
+                                );
+                              },
+                              child: Image.network(
+                                e['image'],
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -355,6 +350,29 @@ class _Details_pageState extends State<Details_page>
               )
             ],
           ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Stack(children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, left: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icon(Icons.arrow_back_ios),
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+              ]),
+            ],
+          )
         ],
       ),
     );
