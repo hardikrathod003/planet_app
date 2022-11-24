@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:planet_app/global.dart';
+import 'package:planet_app/screens/global.dart';
 
 class Details_page extends StatefulWidget {
   const Details_page({Key? key}) : super(key: key);

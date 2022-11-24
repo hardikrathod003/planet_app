@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:planet_app/detail_page.dart';
+import 'package:planet_app/screens/detail_page.dart';
 
-import 'Homepage.dart';
+import 'screens/Homepage.dart';
 
 void main() {
   runApp(MaterialApp(
